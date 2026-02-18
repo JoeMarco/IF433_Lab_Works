@@ -19,11 +19,11 @@ fun main() {
     println("${hero.name} VS Enemy")
 
     while (hero.isAlive() && enemyHp > 0) {
-        println("\n===============")
+        println("\n==================")
         println("STATUS:")
         println("${hero.name} HP: ${hero.hp}")
         println("Enemy HP: $enemyHp")
-        println("===============")
+        println("==================")
 
         println("\nPilih Aksi:")
         println("1. Serang")
@@ -63,9 +63,9 @@ fun main() {
         }
     }
 
-    println("\n===============")
+    println("\n==================")
     println("==  BATTLE END! ==")
-    println("===============")
+    println("==================")
 
     if (hero.isAlive() && enemyHp <= 0) {
         println("${hero.name} MENANG!")
