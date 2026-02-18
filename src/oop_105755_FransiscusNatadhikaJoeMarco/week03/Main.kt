@@ -8,4 +8,5 @@ fun main() {
 
     e.increasePerformance()
     println("Pajak yang Harus Dibayar: ${e.tax}")
+    //Clean Looking, Sorry Ko, di commit ke5 dan sblmnya lupa pakai comment
 }
