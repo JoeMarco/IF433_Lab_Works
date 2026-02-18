@@ -7,3 +7,4 @@ fun main() {
     sword.damage = 9999
     println("Weapon: ${sword.name}, Damage: ${sword.damage}, Tier: ${sword.tier}!")
 }
+
