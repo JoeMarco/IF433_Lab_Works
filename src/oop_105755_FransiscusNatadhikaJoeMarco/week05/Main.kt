@@ -47,6 +47,12 @@ fun main() {
     println("=== SISTEM PEMBAYARAN ===")
     for (payment in daftarPembayaran) {
         payment.processPayment(75000.0)
+        if (payment is EWallet) {
+            println("=> Terdeteksi EWallet, melakukan topUp otomatis Rp50.000...")
+            payment.topUp(50000.0)
+            println("=> Mencoba pembayaran ulang Rp75.000...")
+            payment.processPayment(75000.0)
+        }
         println("-------------------------")
     }
 }
