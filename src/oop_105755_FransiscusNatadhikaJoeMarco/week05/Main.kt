@@ -20,6 +20,20 @@ fun main() {
                 pegawai.doAdminWork()
             }
         }
-        println("--------------------")
+        println("-----------------------------------------------------------------")
     }
+
+   //Tugas Mandiri 1
+    println("\n=== TUGAS MANDIRI 1: MathHelper Overloading ===")
+    val math = MathHelper()
+
+    val luasPersegi = math.hitungLuas(sisi = 5)
+    println("Luas Persegi (sisi=5): $luasPersegi")
+
+    val luasPersegiPanjang = math.hitungLuas(panjang = 4, lebar = 7)
+    println("Luas Persegi Panjang (4x7): $luasPersegiPanjang")
+
+    val luasLingkaran = math.hitungLuas(jariJari = 3.5)
+    println("Luas Lingkaran (r=3.5): $luasLingkaran")
+
 }
