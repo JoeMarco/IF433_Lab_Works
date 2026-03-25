@@ -36,4 +36,8 @@ fun main() {
         is ApiResponse.Loading -> "Tampilkan Spinner"
     }
     println(uiMessage)
+
+    println("\n=== TEST SINGLETON GameRPG ===")
+    GameManager.startGame()
+    GameManager.startGame()
 }
