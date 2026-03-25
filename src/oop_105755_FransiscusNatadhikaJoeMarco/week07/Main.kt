@@ -40,4 +40,9 @@ fun main() {
     println("\n=== TEST SINGLETON GameRPG ===")
     GameManager.startGame()
     GameManager.startGame()
+
+    println("\n=== TEST RARITY & FACTORY INSTANTIATION GameRPG ===")
+    println("Drop chance LEGENDARY: ${ItemRarity.LEGENDARY.dropChance}%")
+    val starterWeapon = Weapon.forgeStarterSword()
+    println("Senjata awal: $starterWeapon")
 }
