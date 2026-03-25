@@ -45,4 +45,16 @@ fun main() {
     println("Drop chance LEGENDARY: ${ItemRarity.LEGENDARY.dropChance}%")
     val starterWeapon = Weapon.forgeStarterSword()
     println("Senjata awal: $starterWeapon")
+
+    println("\n=== TEST TEST COPY & SEALED CLASS EVENTS GameRPG ===")
+    val upgradedItem = starterWeapon.item.copy(damage = 25)
+    println("Item asli  : ${starterWeapon.item}")
+    println("Item upgrade: $upgradedItem")
+
+    println("--- Simulasi Alur Pertarungan ---")
+    processEvent(BattleState.SafeZone)
+    processEvent(BattleState.MonsterEncounter("Goblin Nakal"))
+    processEvent(BattleState.LootDropped(upgradedItem))
+    processEvent(BattleState.GameOver("Terkena jebakan racun"))
+    println()
 }
