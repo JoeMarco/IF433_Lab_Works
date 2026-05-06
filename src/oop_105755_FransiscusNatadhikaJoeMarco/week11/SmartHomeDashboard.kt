@@ -22,6 +22,7 @@ fun main() {
         SmartDevice("Daikin Inverter (Kabel 3x2.5)", "HVAC", false, 800)
     }
     homeDevices.add(ac)
+
     homeDevices.add(SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10))
 
     val searchResult = homeDevices.find { it.category == "Camera" }
@@ -37,4 +38,7 @@ fun main() {
 
     val totalPower = homeDevices.run { sumOf { it.powerLoad } }
     println("Total Konsumsi Daya: $totalPower Watt")
+
+    println("\n=== DIAGNOSTIK SEMUA PERANGKAT ===")
+    homeDevices.forEach { println(it.diagnose()) }
 }
