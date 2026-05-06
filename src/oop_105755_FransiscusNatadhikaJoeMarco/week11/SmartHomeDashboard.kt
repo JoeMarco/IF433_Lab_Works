@@ -29,4 +29,9 @@ fun main() {
         println("\n=== HASIL PENCARIAN KAMERA ===")
         println(it.diagnose())
     }
+
+    with(homeDevices) {
+        println("\n=== SUMMARY SMART HOME ===")
+        println("Total perangkat terdaftar: ${this.size}")
+    }
 }
