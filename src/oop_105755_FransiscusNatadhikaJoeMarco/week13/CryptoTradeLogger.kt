@@ -14,17 +14,6 @@ data class TradeRecord(
 fun TradeRecord.toCsv(): String = "$id,$symbol,$type,$margin,$pnl"
 
 fun fromCsvTrade(line: String): TradeRecord? {
-    val parts = line.split(",")
-    return TradeRecord(
-        id     = parts[0].toInt(),
-        symbol = parts[1],
-        type   = parts[2],
-        margin = parts[3].toDouble(),
-        pnl    = parts[4].toDouble()
-    )
-}
-
-fun fromCsvTrade(line: String): TradeRecord? {
     return try {
         val parts = line.split(",")
         TradeRecord(
@@ -69,5 +58,9 @@ fun main() {
     println("Baris korup berhasil di-inject untuk pengujian.")
 
     val loadedData = loadTrades(path = "crypto_trades.csv")
-    val totalPnl = loadedData.sumOf { it.pnl }
+    val totalPnl   = loadedData.sumOf { it.pnl }
 
+    println("\n=== CRYPTO TRADE DASHBOARD ===")
+    loadedData.forEach { println(it) }
+    println("\n==== TOTAL PnL BERSIH: $totalPnl ====")
+}
