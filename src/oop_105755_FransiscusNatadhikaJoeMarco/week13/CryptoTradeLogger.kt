@@ -68,3 +68,6 @@ fun main() {
     File("crypto_trades.csv").appendText("CORRUPT_ID,DOGEUSDT,Hold,XX,YY\n")
     println("Baris korup berhasil di-inject untuk pengujian.")
 
+    val loadedData = loadTrades(path = "crypto_trades.csv")
+    val totalPnl = loadedData.sumOf { it.pnl }
+
