@@ -55,3 +55,26 @@ class SafeOrderProcessor(
         notifier.sendNotification(itemName)
     }
 }
+
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class RegularPricing : PricingStrategy {
+    override fun calculate(price: Double) = price
+}
+
+class VipPricing : PricingStrategy {
+    override fun calculate(price: Double) = price * 0.90
+}
+
+fun main() {
+    val processor = SafeOrderProcessor(
+        repo     = CsvOrderRepository(),
+        notifier = EmailNotifier()
+    )
+
+    println("=== PROCESSING ORDERS ===")
+    processor.processOrder("Laptop",   15000000.0, RegularPricing())
+    processor.processOrder("Keyboard",  500000.0,  VipPricing())
+}
