@@ -20,3 +20,38 @@ class BadOrderProcessor {
         println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
     }
 }
+
+interface OrderRepository {
+    fun saveOrder(itemName: String, finalPrice: Double, customerType: String)
+}
+
+class CsvOrderRepository : OrderRepository {
+    override fun saveOrder(itemName: String, finalPrice: Double, customerType: String) {
+        File("orders.csv").printWriter().use { writer ->
+            writer.println("$itemName,$finalPrice,$customerType")
+        }
+        println("(Repo) Order disimpan ke orders.csv")
+    }
+}
+
+interface NotificationService {
+    fun sendNotification(itemName: String)
+}
+
+class EmailNotifier : NotificationService {
+    override fun sendNotification(itemName: String) {
+        println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
+    }
+}
+
+class SafeOrderProcessor(
+    val repo:     OrderRepository,
+    val notifier: NotificationService
+) {
+    fun processOrder(itemName: String, basePrice: Double, pricing: PricingStrategy) {
+        val finalPrice = pricing.calculate(basePrice)
+        println("Memproses pesanan $itemName seharga $finalPrice")
+        repo.saveOrder(itemName, finalPrice, pricing.javaClass.simpleName)
+        notifier.sendNotification(itemName)
+    }
+}
